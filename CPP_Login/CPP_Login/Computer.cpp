@@ -16,7 +16,7 @@ void Computer::StatusComp()
 	system("pause");
 }
 
-void Computer::ShowMenu()
+void Computer::MenuComp()
 {
 	int iSelect;
 	while (1)

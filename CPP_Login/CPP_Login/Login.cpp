@@ -53,7 +53,7 @@ void Login::GetLogin()
 		}
 		else
 		{
-			cout << "최정호 컴퓨터 on" << endl;
+			cout << "Atents 컴퓨터 on" << endl;
 			Sleep(3000);
 			while (1)
 			{
@@ -69,10 +69,11 @@ void Login::GetLogin()
 				switch (iSelect)
 				{
 				case 1:
-					m_Com.StatusComp();
+					StatusComp();
 					break;
+
 				case 2:
-					m_Com.ShowMenu();
+					MenuComp();
 					break;
 
 				case 3:

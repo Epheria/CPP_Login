@@ -7,7 +7,7 @@ private:
 
 public:
 	void StatusComp();
-	void ShowMenu();
+	void MenuComp();
 	Computer();
 	~Computer();
 };
