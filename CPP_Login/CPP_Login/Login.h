@@ -1,6 +1,5 @@
 #pragma once
 #include "Macro.h"
-#include "Computer.h"
 
 typedef struct Account
 {
@@ -12,20 +11,18 @@ typedef struct Account
 	int m_iMile;
 }Account;
 
-class Login : public Computer
+class Login
 {
 private:
 	int m_iCur;
-	Account m_User;
 	vector<Account> m_UserList;
-	Computer m_Com;
 public:
-	void Update();
+	bool LoginMenu();
 	void ShowMenu();
 	void CreateAccount();
+	bool GetLogin();
 	bool CheckID(Account tmp);
 	bool CheckPW(Account tmp, string inputPW);
-	void GetLogin();
 	bool CheckLogin(string checkID, string checkPW);
 	void ShowInfo();
 	void Modify();

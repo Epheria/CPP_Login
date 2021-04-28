@@ -5,7 +5,7 @@ Login::Login()
 	m_iCur = 0;
 }
 
-void Login::Update()
+bool Login::LoginMenu()
 {
 	int iSelect;
 
@@ -25,19 +25,25 @@ void Login::Update()
 			break;
 
 		case 2:
-			GetLogin();
+			if (GetLogin() == true)
+				return true;
 			break;
 
 		case 3:
-			return;
+			return false;
 		}
 	}
 }
 
-void Login::GetLogin()
+bool Login::GetLogin()
 {
-	int iSelect;
+	bool flag;
 	string checkID, checkPW;
+	if (m_UserList.empty())
+	{
+		cout << "회원가입한 유저가 없습니다." << endl;
+		return false;
+	}
 
 	while (1)
 	{
@@ -50,53 +56,16 @@ void Login::GetLogin()
 		{
 			cout << "해당 아이디가 없거나 비밀번호가 틀렸습니다." << endl;
 			system("pause");
+			flag = false;
 		}
 		else
 		{
-			cout << "Atents 컴퓨터 on" << endl;
-			Sleep(3000);
-			while (1)
-			{
-				system("cls");
-				cout << "========= 환 영 합 니 다 ==========" << endl;
-				cout << "1.컴퓨터 상태" << endl;
-				cout << "2.기능" << endl;
-				cout << "3.회원 정보" << endl;
-				cout << "4.회원 정보 변경" << endl;
-				cout << "5.off" << endl;
-				cout << "입력 : ";
-				cin >> iSelect;
-				switch (iSelect)
-				{
-				case 1:
-					StatusComp();
-					break;
-
-				case 2:
-					MenuComp();
-					break;
-
-				case 3:
-					ShowInfo();
-					system("pause");
-					break;
-
-				case 4:
-					Modify();
-					system("pause");
-					break;
-
-				case 5:
-					for (int i = 5; i > 0; i--)
-					{
-						cout << "off " << i << "초 전" << endl;
-						Sleep(1000);
-					}
-					return;
-				}
-			}
+			flag = true;
+			break;
 		}
 	}
+
+	return flag;
 }
 
 void Login::CreateAccount()
@@ -224,6 +193,7 @@ bool Login::CheckPW(Account tmp, string inputPW)
 
 bool Login::CheckLogin(string checkID, string checkPW)
 {
+	m_iCur = 0;
 	for (vector<Account>::iterator iter = m_UserList.begin(); iter != m_UserList.end(); iter++)
 	{
 		if (checkID == iter->m_strID && checkPW == iter->m_strPW)

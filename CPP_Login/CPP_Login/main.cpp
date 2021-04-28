@@ -1,8 +1,8 @@
 #include "Macro.h"
-#include "Login.h"
+#include "Computer.h"
 
 void main()
 {
-	Login User;
+	Computer User;
 	User.Update();
 }
